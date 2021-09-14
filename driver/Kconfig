@@ -1,0 +1,19 @@
+#
+# Copyright (c) 2021 Circuit Dojo LLC
+#
+
+menuconfig SHT40
+	bool "SHT40 Temperature and Humidity Sensor"
+	depends on I2C
+	help
+	  Enable driver for SHT40 temperature/humidity sensor.
+
+if SHT40
+
+config SHT40_DRV_NAME
+	string "Sensirion SHT40 Driver's name"
+	default "SHT40"
+	help
+	  This option sets the driver name
+
+endif # SHT40

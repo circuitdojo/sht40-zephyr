@@ -1,0 +1,9 @@
+#
+# Copyright (c) 2021 Circuit Dojo LLC
+#
+
+description: Sensirion SHT40 Temp/Humidity Sensor
+
+compatible: "sensirion,sht40"
+
+include: i2c-device.yaml
