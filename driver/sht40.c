@@ -95,6 +95,7 @@ static int sht40_sample_both(struct sht40_data *dat)
 static int sht40_sample_fetch(const struct device *dev,
                               enum sensor_channel chan)
 {
+    int err = 0;
 
     struct sht40_data *dat = (struct sht40_data *)dev->data;
 
@@ -104,7 +105,10 @@ static int sht40_sample_fetch(const struct device *dev,
     case SENSOR_CHAN_ALL:
     case SENSOR_CHAN_AMBIENT_TEMP:
     case SENSOR_CHAN_HUMIDITY:
-        sht40_sample_both(dat);
+        err = sht40_sample_both(dat);
+        if (err)
+            return err;
+
         break;
     default:
         LOG_WRN("Invalid sensor_channel %i", chan);
